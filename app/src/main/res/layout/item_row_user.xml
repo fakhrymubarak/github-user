@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:background="@drawable/shape_rectangle_outline_darkgrey"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_avatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/profile_avatar"
+            android:scaleType="centerCrop" />
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/TextContext.Large"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_url"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Name" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/TextContext.Regular"
+        android:drawablePadding="3dp"
+        android:text="@string/url"
+        app:drawableStartCompat="@drawable/ic_url_15dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_name"
+        app:layout_constraintTop_toTopOf="@id/cv_avatar"
+        app:layout_constraintBottom_toBottomOf="@id/cv_avatar"
+        tools:layout_editor_absoluteY="33dp" />
+
+    <TextView
+        android:id="@+id/tv_url"
+        style="@style/TextContext.Regular"
+        android:layout_width="0dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="8dp"
+        android:drawablePadding="3dp"
+        app:layout_constraintEnd_toStartOf="@+id/cv_avatar"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        tools:text="https://github.com/{username}" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/TextContext.Regular"
+        android:layout_marginTop="4dp"
+        android:drawablePadding="3dp"
+        android:fontFamily="@font/raleway"
+        android:text="@string/id"
+        app:drawableStartCompat="@drawable/ic_identity_15dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_url" />
+
+    <TextView
+        android:id="@+id/tv_id_number"
+        style="@style/TextContext.Regular"
+        android:layout_marginStart="3dp"
+        android:drawablePadding="3dp"
+        android:fontFamily="@font/raleway"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        tools:text="Identity Number" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

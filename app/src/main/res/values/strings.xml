@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Submission 2 BFAA </string>
+
+    <!--User Details-->
+    <string name="id">id :</string>
+    <string name="url">url :</string>
+
+    <!--Content Description-->
+    <string name="profile_avatar">Profile Avatar</string>
+    <string name="logo_dicoding_x_idcamp">Logo Dicoding x IdCamp</string>
+
+    <!--Action Bar-->
+    <string name="search">Search</string>
+    <string name="search_hint">Search user</string>
+    <string name="settings">Settings</string>
+
+    <!--TabLayout-->
+    <string name="tab_text_1">Followers</string>
+    <string name="tab_text_2">Following</string>
+
+    <string name="sentences">
+        Hi, there!
+        \nYou can use this application for searching a github user by fill the search field in the top of your screen!
+        \n\nnb. Tekan tombol pojok kanan atas untuk mengubah ke Bahasa Indonesia!
+    </string>
+    <string name="youOffline">You are offline. Please, connect to the internet.</string>
+</resources>

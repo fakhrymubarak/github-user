@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#24292e</color>
+    <color name="colorPrimaryDark">#16181B</color>
+    <color name="colorAccent">#0359DA</color>
+
+    <color name="colorBlack">#000</color>
+    <color name="colorWhite">#fff</color>
+
+    <color name="colorGithubGrey">#f6f8fa</color>
+    <color name="colorGithubActive">#0366d6</color>
+
+    <color name="colorGithubLineRegular">#e7eaed</color>
+    <color name="colorGithubLineBold">#6f7881</color>
+
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Submission 2 BFAA </string>
+
+    <!--User Details-->
+    <string name="id">id :</string>
+    <string name="url">url :</string>
+
+    <!--Content Description-->
+    <string name="profile_avatar">Foto Profil</string>
+    <string name="logo_dicoding_x_idcamp">Logo Dicoding x IdCamp</string>
+
+    <!--Action Bar-->
+    <string name="search">Cari</string>
+    <string name="search_hint">Cari user</string>
+    <string name="settings">Pengaturan</string>
+
+    <!--TabLayout-->
+    <string name="tab_text_1">Pengikut</string>
+    <string name="tab_text_2">Mengikuti</string>
+
+    <string name="sentences">
+        Halo!!
+        \nKamu bisa menggunakan aplikasi ini untuk mencari pengguna github dengan mengisi kolom pencarian di bagian atas layarmu!
+        \n\np.s. Press the button in the corner (top right) to change into English!
+    </string>
+    <string name="youOffline">Kamu sedang offline. Tolong koneksikan perangkatmu dengan internet.</string>
+</resources>
