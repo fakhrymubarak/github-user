@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.example.githubusersubmission.FollowFragment
+import com.example.githubusersubmission.ui.FollowFragment
 import com.example.githubusersubmission.R
 
 class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) :

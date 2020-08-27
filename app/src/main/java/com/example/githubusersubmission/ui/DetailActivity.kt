@@ -1,4 +1,4 @@
-package com.example.githubusersubmission
+package com.example.githubusersubmission.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.githubusersubmission.R
 import com.example.githubusersubmission.adapter.SectionsPagerAdapter
 import com.example.githubusersubmission.model.UserModel
 import com.example.githubusersubmission.viewmodel.DetailViewModel

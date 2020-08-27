@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailActivity">
+    tools:context=".ui.DetailActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/materialup.appbar"
@@ -43,9 +43,12 @@
             <TextView
                 android:id="@+id/tv_company"
                 style="@style/TextContext.Regular"
+                android:layout_width="0dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
                 android:drawablePadding="3dp"
                 app:drawableStartCompat="@drawable/ic_company_15dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tv_name"
                 app:layout_constraintTop_toBottomOf="@+id/tv_name"
                 tools:text="Company" />
@@ -53,9 +56,12 @@
             <TextView
                 android:id="@+id/tv_location"
                 style="@style/TextContext.Regular"
+                android:layout_width="0dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
                 android:drawablePadding="3dp"
                 app:drawableStartCompat="@drawable/ic_location_15dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tv_name"
                 app:layout_constraintTop_toBottomOf="@+id/tv_company"
                 tools:text="Location" />

@@ -1,4 +1,4 @@
-package com.example.githubusersubmission
+package com.example.githubusersubmission.ui
 
 import android.app.SearchManager
 import android.content.Context
@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.githubusersubmission.R
 import com.example.githubusersubmission.adapter.ListUserAdapter
 import com.example.githubusersubmission.model.UserModel
 import com.example.githubusersubmission.viewmodel.MainViewModel

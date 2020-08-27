@@ -1,5 +1,6 @@
-package com.example.githubusersubmission
+package com.example.githubusersubmission.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +10,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
+import com.example.githubusersubmission.R
 import com.example.githubusersubmission.adapter.FollowersAdapter
 import com.example.githubusersubmission.adapter.FollowingAdapter
+import com.example.githubusersubmission.adapter.ListUserAdapter
+import com.example.githubusersubmission.model.UserModel
 import com.example.githubusersubmission.viewmodel.FollowersViewModel
 import com.example.githubusersubmission.viewmodel.FollowingViewModel
 import kotlinx.android.synthetic.main.fragment_follows.*
-
 
 class FollowFragment : Fragment() {
     private lateinit var followersAdapter: FollowersAdapter
@@ -71,6 +74,12 @@ class FollowFragment : Fragment() {
                             followersAdapter.setData(userModel)
                         }
                     })
+                    followersAdapter.setOnItemClickCallback(object :
+                        ListUserAdapter.OnItemClickCallback {
+                        override fun onItemClicked(data: UserModel) {
+                            showSelectedUser(data)
+                        }
+                    })
                 }
                 2 -> {
                     followingAdapter = FollowingAdapter()
@@ -86,8 +95,20 @@ class FollowFragment : Fragment() {
                             followingAdapter.setData(userModel)
                         }
                     })
+                    followingAdapter.setOnItemClickCallback(object :
+                        ListUserAdapter.OnItemClickCallback {
+                        override fun onItemClicked(data: UserModel) {
+                            showSelectedUser(data)
+                        }
+                    })
                 }
             }
         }
+    }
+
+    private fun showSelectedUser(userModel: UserModel) {
+        val intent = Intent(context, DetailActivity::class.java)
+        intent.putExtra(DetailActivity.EXTRA_STATE, userModel)
+        startActivity(intent)
     }
 }

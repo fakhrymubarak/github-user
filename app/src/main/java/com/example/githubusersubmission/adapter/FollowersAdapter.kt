@@ -11,6 +11,7 @@ import com.example.githubusersubmission.model.UserModel
 import kotlinx.android.synthetic.main.item_row_follow.view.*
 
 class FollowersAdapter : RecyclerView.Adapter<FollowersAdapter.ListViewHolder>() {
+    private lateinit var onItemClickCallback: ListUserAdapter.OnItemClickCallback
     private val listFollowers = ArrayList<UserModel>()
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,8 +40,14 @@ class FollowersAdapter : RecyclerView.Adapter<FollowersAdapter.ListViewHolder>()
         return ListViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(listFollowers[position])
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listFollowers[position]) }
+    }
+
+    fun setOnItemClickCallback(onItemClickCallback: ListUserAdapter.OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     override fun getItemCount(): Int = listFollowers.size
 }
