@@ -8,7 +8,8 @@ Features :
 * View user's following and followers
 
 ## Screenshot
-
+![Screenshot1](https://github.com/fakhrymubarak/github-user/blob/master/Screenshot1.png)
+![Screenshot1](https://github.com/fakhrymubarak/github-user/blob/master/Screenshot2.png)
 
 ## Build
 Note that in order to access the Github API, you must at a minimum:
