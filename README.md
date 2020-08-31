@@ -23,4 +23,4 @@ API_KEY = "token YOUR_PERSONAL_ACCESS_TOKEN"
 
 ## Developer
 * Fakhry Mubarak
-* [Instagram : @gfakhry.m](https://www.instagram.com/fakhry.m_/)
+* [Instagram : Developer Gabut](https://www.instagram.com/developer.gabut/)
