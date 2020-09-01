@@ -2,7 +2,6 @@ package com.example.githubusersubmission.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -42,7 +41,7 @@ class DetailActivity : AppCompatActivity() {
         )
         detailViewModel.setDataUser(userModel?.username)
         detailViewModel.getDetailUser().observe(this, { dataUser ->
-            showLoading(false)
+            MainActivity().showLoading(false)
             if (dataUser != null) {
                 tv_name.text = dataUser.username
                 tv_name.text = dataUser.name
@@ -65,15 +64,7 @@ class DetailActivity : AppCompatActivity() {
         sectionsPagerAdapter.username = userModel?.username
         view_pager.adapter = sectionsPagerAdapter
         tabs.setupWithViewPager(view_pager)
-        showLoading(true)
-    }
-
-    private fun showLoading(state: Boolean) {
-        if (state) {
-            progressBar.visibility = View.VISIBLE
-        } else {
-            progressBar.visibility = View.GONE
-        }
+        MainActivity().showLoading(true)
     }
 }
 
