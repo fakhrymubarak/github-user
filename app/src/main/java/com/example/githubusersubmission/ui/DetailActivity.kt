@@ -2,6 +2,7 @@ package com.example.githubusersubmission.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -10,6 +11,8 @@ import com.example.githubusersubmission.adapter.SectionsPagerAdapter
 import com.example.githubusersubmission.model.UserModel
 import com.example.githubusersubmission.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.activity_detail_user.*
+import kotlinx.android.synthetic.main.activity_detail_user.progressBar
+import kotlinx.android.synthetic.main.activity_main.*
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var detailViewModel: DetailViewModel
@@ -41,7 +44,7 @@ class DetailActivity : AppCompatActivity() {
         )
         detailViewModel.setDataUser(userModel?.username)
         detailViewModel.getDetailUser().observe(this, { dataUser ->
-            MainActivity().showLoading(false)
+            showLoading(false)
             if (dataUser != null) {
                 tv_name.text = dataUser.username
                 tv_name.text = dataUser.name
@@ -64,7 +67,15 @@ class DetailActivity : AppCompatActivity() {
         sectionsPagerAdapter.username = userModel?.username
         view_pager.adapter = sectionsPagerAdapter
         tabs.setupWithViewPager(view_pager)
-        MainActivity().showLoading(true)
+        showLoading(true)
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            progressBar.visibility = View.VISIBLE
+        } else {
+            progressBar.visibility = View.GONE
+        }
     }
 }
 

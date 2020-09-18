@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun showLoading(state: Boolean) {
+    private fun showLoading(state: Boolean) {
         if (state) {
             progressBar.visibility = View.VISIBLE
         } else {
