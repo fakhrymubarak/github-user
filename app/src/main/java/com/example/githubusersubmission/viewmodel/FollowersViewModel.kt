@@ -18,7 +18,7 @@ class FollowersViewModel : ViewModel() {
     fun setListFollowers(username: String?) {
         val listData = ArrayList<UserModel>()
 
-        val url = "https://api.github.com/users/$username/followers"
+        val url = "https://api.github.com/users/$username/following?page=1&per_page=100"
 
         val client = AsyncHttpClient()
         client.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
