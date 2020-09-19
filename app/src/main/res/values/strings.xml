@@ -25,4 +25,11 @@
         \n\nnb. Tekan tombol pojok kanan atas untuk mengubah ke Bahasa Indonesia!
     </string>
     <string name="youOffline">You are offline. Please, connect to the internet.</string>
+
+    <!--Favorite-->
+    <string name="favorite_user">Favorite</string>
+    <string name="added_to_favorite">added to favorite</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
+    <string name="repository">Repository</string>
 </resources>
