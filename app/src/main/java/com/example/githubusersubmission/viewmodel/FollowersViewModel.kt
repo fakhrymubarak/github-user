@@ -15,10 +15,10 @@ import java.lang.Exception
 class FollowersViewModel : ViewModel() {
     private val listFollowers = MutableLiveData<ArrayList<UserModel>>()
 
-    fun setListFollowers(username: String?) {
+    fun setListFollowers(username: String) {
         val listData = ArrayList<UserModel>()
 
-        val url = "https://api.github.com/users/$username/following?page=1&per_page=100"
+        val url = "https://api.github.com/users/$username/followers?page=1&per_page=100"
 
         val client = AsyncHttpClient()
         client.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
@@ -32,7 +32,6 @@ class FollowersViewModel : ViewModel() {
                 try {
                     val result = String(responseBody)
                     val responseArray = JSONArray(result)
-
                     for (i in 0 until responseArray.length()) {
                         val item = responseArray.getJSONObject(i)
                         val userModel = UserModel()

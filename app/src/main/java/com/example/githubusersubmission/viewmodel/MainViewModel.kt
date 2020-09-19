@@ -18,7 +18,7 @@ class MainViewModel : ViewModel() {
     fun setListUser(query: String) {
         val listData = ArrayList<UserModel>()
 
-        val url = "https://api.github.com/search/users?q=$query?page=1&per_page=100"
+        val url = "https://api.github.com/search/users?q=$query&page=1&per_page=100"
 
         val client = AsyncHttpClient()
         client.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
