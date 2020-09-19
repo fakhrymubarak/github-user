@@ -50,7 +50,7 @@ class DetailActivity : AppCompatActivity() {
                 tv_name.text = dataUser.name
                 tv_company.text = if (dataUser.company == "null") "-" else dataUser.company
                 tv_location.text = if (dataUser.location == "null") "-" else dataUser.location
-                tv_repository.text = dataUser.repository.toString()
+                tv_repo.text = dataUser.repository.toString()
                 tv_bio.text = if (dataUser.bio == "null") "Github User" else dataUser.bio
                 Glide.with(this)
                     .load(dataUser.avatarUrl)
