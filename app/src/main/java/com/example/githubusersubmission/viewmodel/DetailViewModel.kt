@@ -37,8 +37,8 @@ class DetailViewModel : ViewModel() {
                     user.company = responseObject.getString("company")
                     user.location = responseObject.getString("location")
                     user.repository = responseObject.getInt("public_repos")
-                    user.followers = responseObject.getInt("following")
-                    user.following = responseObject.getInt("followers")
+                    user.followers = responseObject.getInt("followers")
+                    user.following = responseObject.getInt("following")
                     user.bio = responseObject.getString("bio")
                     dataDetails.postValue(user)
                 } catch (e: Exception) {
