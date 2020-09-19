@@ -1,24 +1,24 @@
-package com.example.githubusersubmission.viewmodel
+package com.fakhry.githubusersubmission.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.githubusersubmission.BuildConfig
-import com.example.githubusersubmission.model.UserModel
+import com.fakhry.githubusersubmission.BuildConfig
+import com.fakhry.githubusersubmission.model.UserModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
 import org.json.JSONArray
 import java.lang.Exception
 
-class FollowingViewModel : ViewModel() {
-    private val listFollowing = MutableLiveData<ArrayList<UserModel>>()
+class FollowersViewModel : ViewModel() {
+    private val listFollowers = MutableLiveData<ArrayList<UserModel>>()
 
-    fun setListFollowing(username: String) {
+    fun setListFollowers(username: String) {
         val listData = ArrayList<UserModel>()
 
-        val url = "https://api.github.com/users/$username/following?page=1&per_page=100"
+        val url = "https://api.github.com/users/$username/followers?page=1&per_page=100"
 
         val client = AsyncHttpClient()
         client.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
@@ -40,7 +40,7 @@ class FollowingViewModel : ViewModel() {
                         userModel.avatarUrl = item.getString("avatar_url")
                         listData.add(userModel)
                     }
-                    listFollowing.postValue(listData)
+                    listFollowers.postValue(listData)
                 } catch (e: Exception) {
                     Log.d("onSuccess", e.message.toString())
                 }
@@ -55,8 +55,7 @@ class FollowingViewModel : ViewModel() {
                 Log.d("onFailure", error.message.toString())
             }
         })
-
     }
 
-    fun getUsers(): LiveData<ArrayList<UserModel>> = listFollowing
+    fun getUsers(): LiveData<ArrayList<UserModel>> = listFollowers
 }

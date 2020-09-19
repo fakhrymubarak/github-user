@@ -1,4 +1,4 @@
-package com.example.githubusersubmission.ui
+package com.fakhry.githubusersubmission.ui
 
 import android.app.SearchManager
 import android.content.Context
@@ -16,10 +16,10 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.githubusersubmission.R
-import com.example.githubusersubmission.adapter.ListUserAdapter
-import com.example.githubusersubmission.model.UserModel
-import com.example.githubusersubmission.viewmodel.MainViewModel
+import com.fakhry.githubusersubmission.R
+import com.fakhry.githubusersubmission.adapter.ListUserAdapter
+import com.fakhry.githubusersubmission.model.UserModel
+import com.fakhry.githubusersubmission.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

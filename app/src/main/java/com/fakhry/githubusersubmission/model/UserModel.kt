@@ -1,4 +1,4 @@
-package com.example.githubusersubmission.model
+package com.fakhry.githubusersubmission.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

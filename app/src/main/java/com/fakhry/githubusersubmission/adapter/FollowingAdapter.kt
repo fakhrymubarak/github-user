@@ -1,4 +1,4 @@
-package com.example.githubusersubmission.adapter
+package com.fakhry.githubusersubmission.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.githubusersubmission.R
-import com.example.githubusersubmission.model.UserModel
+import com.fakhry.githubusersubmission.R
+import com.fakhry.githubusersubmission.model.UserModel
 import kotlinx.android.synthetic.main.item_row_follow.view.*
 
-class FollowersAdapter : RecyclerView.Adapter<FollowersAdapter.ListViewHolder>() {
+class FollowingAdapter : RecyclerView.Adapter<FollowingAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: ListUserAdapter.OnItemClickCallback
-    private val listFollowers = ArrayList<UserModel>()
+    private val listFollowing = ArrayList<UserModel>()
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(user: UserModel) {
@@ -29,8 +29,8 @@ class FollowersAdapter : RecyclerView.Adapter<FollowersAdapter.ListViewHolder>()
     }
 
     fun setData(items: ArrayList<UserModel>) {
-        listFollowers.clear()
-        listFollowers.addAll(items)
+        listFollowing.clear()
+        listFollowing.addAll(items)
         notifyDataSetChanged()
     }
 
@@ -41,13 +41,13 @@ class FollowersAdapter : RecyclerView.Adapter<FollowersAdapter.ListViewHolder>()
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(listFollowers[position])
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listFollowers[position]) }
+        holder.bind(listFollowing[position])
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listFollowing[position]) }
     }
 
     fun setOnItemClickCallback(onItemClickCallback: ListUserAdapter.OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    override fun getItemCount(): Int = listFollowers.size
+    override fun getItemCount(): Int = listFollowing.size
 }

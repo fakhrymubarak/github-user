@@ -1,24 +1,24 @@
-package com.example.githubusersubmission.viewmodel
+package com.fakhry.githubusersubmission.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.githubusersubmission.BuildConfig
-import com.example.githubusersubmission.model.UserModel
+import com.fakhry.githubusersubmission.BuildConfig
+import com.fakhry.githubusersubmission.model.UserModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
-import org.json.JSONObject
+import org.json.JSONArray
 import java.lang.Exception
 
-class MainViewModel : ViewModel() {
-    private val listUsers = MutableLiveData<ArrayList<UserModel>>()
+class FollowingViewModel : ViewModel() {
+    private val listFollowing = MutableLiveData<ArrayList<UserModel>>()
 
-    fun setListUser(query: String) {
+    fun setListFollowing(username: String) {
         val listData = ArrayList<UserModel>()
 
-        val url = "https://api.github.com/search/users?q=$query&page=1&per_page=100"
+        val url = "https://api.github.com/users/$username/following?page=1&per_page=100"
 
         val client = AsyncHttpClient()
         client.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
@@ -31,20 +31,16 @@ class MainViewModel : ViewModel() {
             ) {
                 try {
                     val result = String(responseBody)
-                    val responseObject = JSONObject(result)
-                    val items = responseObject.getJSONArray("items")
-
-                    for (i in 0 until items.length()) {
-                        val item = items.getJSONObject(i)
-                        val user = UserModel()
-                        user.idNumber = item.getInt("id")
-                        user.username = item.getString("login")
-                        user.userUrl = item.getString("html_url")
-                        user.avatarUrl = item.getString("avatar_url")
-                        listData.add(user)
+                    val responseArray = JSONArray(result)
+                    for (i in 0 until responseArray.length()) {
+                        val item = responseArray.getJSONObject(i)
+                        val userModel = UserModel()
+                        userModel.username = item.getString("login")
+                        userModel.userUrl = item.getString("html_url")
+                        userModel.avatarUrl = item.getString("avatar_url")
+                        listData.add(userModel)
                     }
-                    listUsers.postValue(listData)
-
+                    listFollowing.postValue(listData)
                 } catch (e: Exception) {
                     Log.d("onSuccess", e.message.toString())
                 }
@@ -59,6 +55,8 @@ class MainViewModel : ViewModel() {
                 Log.d("onFailure", error.message.toString())
             }
         })
+
     }
-    fun getUsers(): LiveData<ArrayList<UserModel>> = listUsers
+
+    fun getUsers(): LiveData<ArrayList<UserModel>> = listFollowing
 }

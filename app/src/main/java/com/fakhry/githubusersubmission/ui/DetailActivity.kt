@@ -1,4 +1,4 @@
-package com.example.githubusersubmission.ui
+package com.fakhry.githubusersubmission.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,13 +6,12 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.githubusersubmission.R
-import com.example.githubusersubmission.adapter.SectionsPagerAdapter
-import com.example.githubusersubmission.model.UserModel
-import com.example.githubusersubmission.viewmodel.DetailViewModel
+import com.fakhry.githubusersubmission.R
+import com.fakhry.githubusersubmission.adapter.SectionsPagerAdapter
+import com.fakhry.githubusersubmission.model.UserModel
+import com.fakhry.githubusersubmission.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.activity_detail_user.*
 import kotlinx.android.synthetic.main.activity_detail_user.progressBar
-import kotlinx.android.synthetic.main.activity_main.*
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var detailViewModel: DetailViewModel
