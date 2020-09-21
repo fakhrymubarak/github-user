@@ -3,13 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_search"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="collapseActionView|always"
         android:icon="@drawable/ic_search_24dp"
-        android:title="@string/search" />
+        android:title="@string/search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="collapseActionView|always" />
     <item
         android:id="@+id/action_localization"
-        app:showAsAction="ifRoom"
         android:icon="@drawable/ic_language_24dp"
-        android:title="@string/settings"/>
+        android:title="@string/settings"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/activity_favorite_user"
+        android:icon="@drawable/ic_fav_border_white_24dp"
+        android:title="@string/favorite_user"
+        app:showAsAction="ifRoom" />
 </menu>

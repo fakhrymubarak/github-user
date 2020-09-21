@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class UserModel(
+    var id: Int = 0,
     var idNumber : Int? = null,
     var userUrl : String? = null,
     var avatarUrl : String? = null,

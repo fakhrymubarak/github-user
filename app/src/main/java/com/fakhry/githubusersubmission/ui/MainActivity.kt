@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                         mainViewModel.setListUser(query)
                     }
                 } else {
-                    Toast.makeText(this@MainActivity, R.string.youOffline, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MainActivity, R.string.you_offline, Toast.LENGTH_LONG).show()
                 }
                 return true
             }
@@ -105,6 +105,10 @@ class MainActivity : AppCompatActivity() {
             R.id.action_localization -> {
                 val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
                 startActivity(mIntent)
+            }
+            R.id.activity_favorite_user -> {
+                val intent = Intent(this, FavUserActivity::class.java)
+                startActivity(intent)
             }
         }
         return super.onOptionsItemSelected(item)
