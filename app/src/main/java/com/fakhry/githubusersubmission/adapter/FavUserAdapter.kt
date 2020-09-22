@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.fakhry.githubusersubmission.R
-import com.fakhry.githubusersubmission.model.FavUserModel
+import com.fakhry.githubusersubmission.model.UserModel
 import kotlinx.android.synthetic.main.item_row_user.view.*
 
 class FavUserAdapter : RecyclerView.Adapter<FavUserAdapter.FavUserViewHolder>() {
-    var listFavUser = ArrayList<FavUserModel>()
+    var listFavUser = ArrayList<UserModel>()
         set(listFavUser) {
             if (listFavUser.size > 0) {
                 this.listFavUser.clear()
@@ -20,12 +20,12 @@ class FavUserAdapter : RecyclerView.Adapter<FavUserAdapter.FavUserViewHolder>() 
             notifyDataSetChanged()
         }
 
-    fun addItem(favUser: FavUserModel) {
+    fun addItem(favUser: UserModel) {
         this.listFavUser.add(favUser)
         notifyItemInserted(this.listFavUser.size - 1)
     }
 
-//    fun updateItem(position: Int, note: FavUserModel) {
+//    fun updateItem(position: Int, note: UserModel) {
 //        this.listFavUser[position] = note
 //        notifyItemChanged(position, note)
 //    }
@@ -49,7 +49,7 @@ class FavUserAdapter : RecyclerView.Adapter<FavUserAdapter.FavUserViewHolder>() 
     override fun getItemCount(): Int = this.listFavUser.size
 
     inner class FavUserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(favUser: FavUserModel) {
+        fun bind(favUser: UserModel) {
             with(itemView) {
                 tv_name.text = favUser.username
                 tv_url.text = favUser.userUrl

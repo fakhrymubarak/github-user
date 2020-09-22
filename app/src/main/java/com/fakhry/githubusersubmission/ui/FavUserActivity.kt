@@ -9,7 +9,7 @@ import com.fakhry.githubusersubmission.R
 import com.fakhry.githubusersubmission.adapter.FavUserAdapter
 import com.fakhry.githubusersubmission.db.FavUserHelper
 import com.fakhry.githubusersubmission.helper.MappingHelper
-import com.fakhry.githubusersubmission.model.FavUserModel
+import com.fakhry.githubusersubmission.model.UserModel
 import com.fakhry.githubusersubmission.ui.DetailActivity.Companion.EXTRA_STATE
 import kotlinx.android.synthetic.main.activity_fav_user.*
 import kotlinx.coroutines.Dispatchers
@@ -38,7 +38,7 @@ class FavUserActivity : AppCompatActivity() {
             // proses ambil data
             loadNotesAsync()
         } else {
-            val list = savedInstanceState.getParcelableArrayList<FavUserModel>(EXTRA_STATE)
+            val list = savedInstanceState.getParcelableArrayList<UserModel>(EXTRA_STATE)
             if (list != null) {
                 adapter.listFavUser = list
             }
@@ -57,7 +57,7 @@ class FavUserActivity : AppCompatActivity() {
             when (requestCode) {
                 DetailActivity.REQUEST_ADD -> if (resultCode == DetailActivity.RESULT_ADD) {
                     val favUser =
-                        data.getParcelableExtra<FavUserModel>(DetailActivity.EXTRA_FAVORITE)
+                        data.getParcelableExtra<UserModel>(DetailActivity.EXTRA_FAVORITE)
                     adapter.addItem(favUser!!)
                     rv_fav_user.smoothScrollToPosition(adapter.itemCount - 1)
                 }
