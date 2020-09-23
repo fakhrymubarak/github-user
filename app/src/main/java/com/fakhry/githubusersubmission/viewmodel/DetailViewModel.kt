@@ -31,6 +31,7 @@ class DetailViewModel : ViewModel() {
                     val result = String(responseBody)
                     val responseObject = JSONObject(result)
                     val user = UserModel()
+                    user.idNumber = responseObject.getInt("id")
                     user.avatarUrl = responseObject.getString("avatar_url")
                     user.username = responseObject.getString("login")
                     user.name = responseObject.getString("name")

@@ -7,6 +7,7 @@ import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.ID
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.TABLE_NAME
+import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.USERNAME
 
 class FavUserHelper(context: Context) {
     private var dataBaseHelper: DatabaseHelper = DatabaseHelper(context)
@@ -69,7 +70,8 @@ class FavUserHelper(context: Context) {
 //        return database.update(DATABASE_TABLE, values, "$ID = ?", arrayOf(id))
 //    }
 
-    fun deleteById(id: String): Int {
-        return database.delete(DATABASE_TABLE, "$ID = '$id'", null)
+    fun deleteByUsername(username: String): Int {
+        return database.delete(DATABASE_TABLE, "$USERNAME = '$username'", null)
     }
+
 }
