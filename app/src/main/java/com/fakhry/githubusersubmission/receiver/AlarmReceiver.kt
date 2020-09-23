@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.fakhry.githubusersubmission.R
+import com.fakhry.githubusersubmission.ui.MainActivity
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -47,7 +48,12 @@ class AlarmReceiver : BroadcastReceiver() {
         val notificationManagerCompat =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+
+        val intent = Intent(context, MainActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
+            .setContentIntent(pendingIntent)
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle(title)
             .setContentText(message)
@@ -85,17 +91,18 @@ class AlarmReceiver : BroadcastReceiver() {
         intent.putExtra(EXTRA_MESSAGE, message)
         val timeArray = time.split(":".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
 
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeArray[0]))
-        calendar.set(Calendar.MINUTE, Integer.parseInt(timeArray[1]))
-        calendar.set(Calendar.SECOND, 0)
+        val calendar = Calendar.getInstance().also {
+            it.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeArray[0]))
+            it.set(Calendar.MINUTE, Integer.parseInt(timeArray[1]))
+            it.set(Calendar.SECOND, 0)
+        }
 
-        val pendingIntent = PendingIntent.getBroadcast(context, ID_REPEATING, intent, 0)
+        val pendingIntentBroadcast = PendingIntent.getBroadcast(context, ID_REPEATING, intent, 0)
         alarmManager.setInexactRepeating(
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,
             AlarmManager.INTERVAL_DAY,
-            pendingIntent
+            pendingIntentBroadcast
         )
         Toast.makeText(context, context.getString(R.string.reminder_set_up), Toast.LENGTH_SHORT).show()
     }
