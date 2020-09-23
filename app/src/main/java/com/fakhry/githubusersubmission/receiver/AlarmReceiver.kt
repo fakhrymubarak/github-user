@@ -33,7 +33,6 @@ class AlarmReceiver : BroadcastReceiver() {
         private const val CHANNEL_ID = "Channel_1"
         private const val  CHANNEL_NAME = "AlarmManager channel"
 
-
     }
 
     override fun onReceive(context: Context, intent: Intent) {
