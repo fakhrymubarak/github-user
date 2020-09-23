@@ -25,11 +25,6 @@ class FavUserAdapter : RecyclerView.Adapter<FavUserAdapter.FavUserViewHolder>() 
         notifyItemInserted(this.listFavUser.size - 1)
     }
 
-//    fun updateItem(position: Int, note: UserModel) {
-//        this.listFavUser[position] = note
-//        notifyItemChanged(position, note)
-//    }
-
     fun removeItem(position: Int) {
         this.listFavUser.removeAt(position)
         notifyItemRemoved(position)

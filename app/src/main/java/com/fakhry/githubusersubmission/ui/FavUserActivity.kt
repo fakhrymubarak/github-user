@@ -1,16 +1,15 @@
 package com.fakhry.githubusersubmission.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fakhry.githubusersubmission.R
 import com.fakhry.githubusersubmission.adapter.FavUserAdapter
 import com.fakhry.githubusersubmission.db.FavUserHelper
 import com.fakhry.githubusersubmission.helper.MappingHelper
 import com.fakhry.githubusersubmission.model.UserModel
-import com.fakhry.githubusersubmission.ui.DetailActivity.Companion.EXTRA_STATE
 import kotlinx.android.synthetic.main.activity_fav_user.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -20,6 +19,10 @@ import kotlinx.coroutines.launch
 class FavUserActivity : AppCompatActivity() {
     private lateinit var adapter: FavUserAdapter
     private lateinit var favUserHelper: FavUserHelper
+
+    companion object {
+        private const val EXTRA_STATE = "EXTRA_STATE"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
