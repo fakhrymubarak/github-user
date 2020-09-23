@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:iconSpaceReserved="false">
+
+    <SwitchPreference
+        android:icon="@drawable/ic_clock_fill_black_24dp"
+        android:key="@string/key_reminder"
+        android:singleLine="true"
+        android:summaryOff="@string/reminder_turned_off"
+        android:title="@string/reminder"
+        app:iconSpaceReserved="false" />
+
+    <Preference
+        android:icon="@drawable/ic_language_fill_black_24dp"
+        android:key="@string/key_language"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/language_preferences"
+        app:iconSpaceReserved="false" />
+</PreferenceScreen>

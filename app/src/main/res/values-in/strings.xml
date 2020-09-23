@@ -33,4 +33,12 @@
     <string name="nothing_favorite_user_to_show">Tidak User Favorit untuk Ditampilkan</string>
     <string name="title_fav_user">Daftar Favorit</string>
     <string name="removed_from_favorite">dihapus dari favorit</string>
+    <string name="reminder_set_up">Pengingat harian telah diaktifkan</string>
+    <string name="notification_message">Ayo berburu user populer di github!</string>
+    <string name="notification_title">Cari Pengguna Github</string>
+    <string name="reminder_turned_off">Pengingat harian telah di-non-aktifkan</string>
+    <string name="language_preferences">Bahasa</string>
+    <string name="key_language">bahasa</string>
+    <string name="reminder">Pengingat</string>
+    <string name="key_reminder">pengingat</string>
 </resources>

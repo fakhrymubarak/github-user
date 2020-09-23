@@ -35,4 +35,17 @@
     <string name="repository">Repository</string>
     <string name="nothing_favorite_user_to_show">Nothing Favorite User to Show</string>
     <string name="title_fav_user">Favorite List</string>
+
+    <!--Notificaiton and Language-->
+    <string name="key_reminder">reminder</string>
+    <string name="reminder">Reminder</string>
+    <string name="key_language">language</string>
+    <string name="language_preferences">Language</string>
+
+    <string name="reminder_set_up">Daily reminder has activated</string>
+    <string name="reminder_turned_off">Daily reminder has turned off</string>
+
+    <string name="notification_title">Github Users</string>
+    <string name="notification_message">Let\'s hunt some popular users on github!</string>
+
 </resources>
