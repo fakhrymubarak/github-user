@@ -103,9 +103,9 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setIconFavorite() {
         if (isFavorite) {
-            fab_favorite.setImageResource(R.drawable.ic_fav_fill_24dp)
+            fab_favorite.setImageResource(R.drawable.ic_fav_fill_white_24dp)
         } else {
-            fab_favorite.setImageResource(R.drawable.ic_fav_border_black_24dp)
+            fab_favorite.setImageResource(R.drawable.ic_fav_border_white_24dp)
         }
     }
 

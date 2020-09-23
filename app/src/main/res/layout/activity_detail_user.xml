@@ -7,7 +7,6 @@
     tools:context=".ui.DetailActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/materialup.appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite">
@@ -80,7 +79,6 @@
                 tools:text="Bio" />
 
             <LinearLayout
-                android:id="@+id/linearLayout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
@@ -198,7 +196,7 @@
         android:clickable="true"
         android:elevation="8dp"
         android:focusable="true"
-        android:src="@drawable/ic_fav_border_black_24dp"
+        android:src="@drawable/ic_fav_border_white_24dp"
         app:fabSize="normal" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
