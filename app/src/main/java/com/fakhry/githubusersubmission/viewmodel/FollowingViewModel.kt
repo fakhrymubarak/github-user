@@ -1,11 +1,11 @@
-package com.example.githubusersubmission.viewmodel
+package com.fakhry.githubusersubmission.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.githubusersubmission.BuildConfig
-import com.example.githubusersubmission.model.UserModel
+import com.fakhry.githubusersubmission.BuildConfig
+import com.fakhry.githubusersubmission.model.UserModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -18,7 +18,7 @@ class FollowingViewModel : ViewModel() {
     fun setListFollowing(username: String) {
         val listData = ArrayList<UserModel>()
 
-        val url = "https://api.github.com/users/$username/following"
+        val url = "https://api.github.com/users/$username/following?page=1&per_page=100"
 
         val client = AsyncHttpClient()
         client.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)

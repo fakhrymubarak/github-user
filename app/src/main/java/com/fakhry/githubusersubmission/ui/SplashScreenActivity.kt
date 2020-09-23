@@ -1,10 +1,10 @@
-package com.example.githubusersubmission.ui
+package com.fakhry.githubusersubmission.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.githubusersubmission.R
+import com.fakhry.githubusersubmission.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay

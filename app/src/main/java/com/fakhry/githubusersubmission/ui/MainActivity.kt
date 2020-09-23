@@ -1,4 +1,4 @@
-package com.example.githubusersubmission.ui
+package com.fakhry.githubusersubmission.ui
 
 import android.app.SearchManager
 import android.content.Context
@@ -16,10 +16,10 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.githubusersubmission.R
-import com.example.githubusersubmission.adapter.ListUserAdapter
-import com.example.githubusersubmission.model.UserModel
-import com.example.githubusersubmission.viewmodel.MainViewModel
+import com.fakhry.githubusersubmission.R
+import com.fakhry.githubusersubmission.adapter.ListUserAdapter
+import com.fakhry.githubusersubmission.model.UserModel
+import com.fakhry.githubusersubmission.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                         mainViewModel.setListUser(query)
                     }
                 } else {
-                    Toast.makeText(this@MainActivity, R.string.youOffline, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MainActivity, R.string.you_offline, Toast.LENGTH_LONG).show()
                 }
                 return true
             }
@@ -105,6 +105,10 @@ class MainActivity : AppCompatActivity() {
             R.id.action_localization -> {
                 val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
                 startActivity(mIntent)
+            }
+            R.id.activity_favorite_user -> {
+                val intent = Intent(this, FavUserActivity::class.java)
+                startActivity(intent)
             }
         }
         return super.onOptionsItemSelected(item)

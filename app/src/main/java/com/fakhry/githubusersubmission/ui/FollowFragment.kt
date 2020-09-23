@@ -1,4 +1,4 @@
-package com.example.githubusersubmission.ui
+package com.fakhry.githubusersubmission.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,13 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
-import com.example.githubusersubmission.R
-import com.example.githubusersubmission.adapter.FollowersAdapter
-import com.example.githubusersubmission.adapter.FollowingAdapter
-import com.example.githubusersubmission.adapter.ListUserAdapter
-import com.example.githubusersubmission.model.UserModel
-import com.example.githubusersubmission.viewmodel.FollowersViewModel
-import com.example.githubusersubmission.viewmodel.FollowingViewModel
+import com.fakhry.githubusersubmission.R
+import com.fakhry.githubusersubmission.adapter.FollowersAdapter
+import com.fakhry.githubusersubmission.adapter.FollowingAdapter
+import com.fakhry.githubusersubmission.adapter.ListUserAdapter
+import com.fakhry.githubusersubmission.model.UserModel
+import com.fakhry.githubusersubmission.viewmodel.FollowersViewModel
+import com.fakhry.githubusersubmission.viewmodel.FollowingViewModel
 import kotlinx.android.synthetic.main.fragment_follows.*
 
 class FollowFragment : Fragment() {

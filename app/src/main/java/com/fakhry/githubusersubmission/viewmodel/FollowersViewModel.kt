@@ -1,11 +1,11 @@
-package com.example.githubusersubmission.viewmodel
+package com.fakhry.githubusersubmission.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.githubusersubmission.BuildConfig
-import com.example.githubusersubmission.model.UserModel
+import com.fakhry.githubusersubmission.BuildConfig
+import com.fakhry.githubusersubmission.model.UserModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -15,10 +15,10 @@ import java.lang.Exception
 class FollowersViewModel : ViewModel() {
     private val listFollowers = MutableLiveData<ArrayList<UserModel>>()
 
-    fun setListFollowers(username: String?) {
+    fun setListFollowers(username: String) {
         val listData = ArrayList<UserModel>()
 
-        val url = "https://api.github.com/users/$username/followers"
+        val url = "https://api.github.com/users/$username/followers?page=1&per_page=100"
 
         val client = AsyncHttpClient()
         client.addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
@@ -32,7 +32,6 @@ class FollowersViewModel : ViewModel() {
                 try {
                     val result = String(responseBody)
                     val responseArray = JSONArray(result)
-
                     for (i in 0 until responseArray.length()) {
                         val item = responseArray.getJSONObject(i)
                         val userModel = UserModel()
