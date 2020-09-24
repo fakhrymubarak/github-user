@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.AVATAR
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.ID
-import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.ID_NUMBER
+import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.NAME
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.TABLE_NAME
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.URL
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.USERNAME
@@ -18,8 +18,8 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
 
         private const val SQL_CREATE_TABLE_FAV_USER = "CREATE TABLE $TABLE_NAME" +
                 " ($ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " $NAME TEXT NOT NULL," +
                 " $USERNAME TEXT NOT NULL," +
-                " $ID_NUMBER INT," +
                 " $URL TEXT NOT NULL," +
                 " $AVATAR TEXT NOT NULL)"
     }

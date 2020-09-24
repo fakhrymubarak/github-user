@@ -16,6 +16,6 @@
         android:key="@string/key_language"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:title="@string/language_preferences"
+        android:title="@string/language"
         app:iconSpaceReserved="false" />
 </PreferenceScreen>

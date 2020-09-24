@@ -12,8 +12,7 @@ import com.fakhry.githubusersubmission.R
 import com.fakhry.githubusersubmission.model.UserModel
 import kotlinx.android.synthetic.main.item_row_user.view.*
 
-class ListUserAdapter :
-    RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
+class ListUserAdapter : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
     private val listUser = ArrayList<UserModel>()
 

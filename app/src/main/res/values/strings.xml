@@ -40,7 +40,7 @@
     <string name="key_reminder">reminder</string>
     <string name="reminder">Reminder</string>
     <string name="key_language">language</string>
-    <string name="language_preferences">Language</string>
+    <string name="language">Language</string>
 
     <string name="reminder_set_up">Daily reminder has activated</string>
     <string name="reminder_turned_off">Daily reminder has turned off</string>

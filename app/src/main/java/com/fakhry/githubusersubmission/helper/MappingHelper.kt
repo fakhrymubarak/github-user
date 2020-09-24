@@ -11,11 +11,11 @@ object MappingHelper {
         favUserCursor?.apply {
             while (moveToNext()) {
                 val id = getInt(getColumnIndex(DatabaseContract.FavUserColumns.ID))
+                val name = getString(getColumnIndex(DatabaseContract.FavUserColumns.NAME))
                 val username = getString(getColumnIndex(DatabaseContract.FavUserColumns.USERNAME))
                 val userUrl = getString(getColumnIndex(DatabaseContract.FavUserColumns.URL))
-                val idNumber = getInt(getColumnIndex(DatabaseContract.FavUserColumns.ID_NUMBER))
                 val avatar = getString(getColumnIndex(DatabaseContract.FavUserColumns.AVATAR))
-                favUserList.add(UserModel(id, username, userUrl, idNumber, avatar))
+                favUserList.add(UserModel(id, name, username, userUrl, avatar))
             }
         }
         return favUserList

@@ -85,7 +85,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     }
 
-    private fun setRepeatAlarm(repeatTime : String) {
+    private fun setRepeatAlarm(repeatTime: String) {
         alarmReceiver.setRepeatingAlarm(
             requireContext(),
             repeatTime
@@ -96,36 +96,37 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     private fun setSummaries() {
         /**
-        * need to know how to get time from active alarm :)
-        */
+         * need to know how to get time from active alarm :)
+         */
 //        val sh = preferenceManager.sharedPreferences
 //        if (sh.getBoolean(ALARM, false)) {
 //            alarmPreference.summaryOn =
 //        }
-        alarmPreference.summaryOn = "Daily reminder activated"
+        alarmPreference.summaryOn = getString(R.string.reminder_set_up)
 
         val currentLanguage = Locale.getDefault().displayLanguage
         languagePreference.summary = currentLanguage
     }
 
-    internal var dialogTimeListener: TimePickerFragment.DialogTimeListener = object : TimePickerFragment.DialogTimeListener {
-        override fun onDialogTimeSet(tag: String?, hourOfDay: Int, minute: Int) {
-            val calendar = Calendar.getInstance().apply {
-                set(Calendar.HOUR_OF_DAY, hourOfDay)
-                set(Calendar.MINUTE, minute)
+    internal var dialogTimeListener: TimePickerFragment.DialogTimeListener =
+        object : TimePickerFragment.DialogTimeListener {
+            override fun onDialogTimeSet(tag: String?, hourOfDay: Int, minute: Int) {
+                val calendar = Calendar.getInstance().apply {
+                    set(Calendar.HOUR_OF_DAY, hourOfDay)
+                    set(Calendar.MINUTE, minute)
+                }
+
+                val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+                val timeTaken = dateFormat.format(calendar.time)
+                alarmPreference.summaryOn = getString(R.string.reminder_set_up) + " " + timeTaken
+                setRepeatAlarm(timeTaken)
+                Log.d("micin", "TimePicker.onDilaogTiuneSet() success")
             }
 
-            val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-            val timeTaken = dateFormat.format(calendar.time)
-            alarmPreference.summaryOn = getString(R.string.reminder_set_up) + timeTaken
-            setRepeatAlarm(timeTaken)
-            Log.d("micin", "TimePicker.onDilaogTiuneSet() success")
-        }
+            override fun onCancel() {
+                alarmPreference.isChecked = false
+                Log.d("micin", "TimePicker.onCance() success")
 
-        override fun onCancel() {
-            alarmPreference.isChecked = false
-            Log.d("micin", "TimePicker.onCance() success")
-
+            }
         }
-    }
 }

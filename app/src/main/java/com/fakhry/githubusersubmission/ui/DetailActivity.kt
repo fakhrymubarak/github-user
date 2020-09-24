@@ -13,7 +13,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.fakhry.githubusersubmission.R
 import com.fakhry.githubusersubmission.adapter.SectionsPagerAdapter
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.AVATAR
-import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.ID_NUMBER
+import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.NAME
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.URL
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.USERNAME
 import com.fakhry.githubusersubmission.db.FavUserHelper
@@ -56,12 +56,10 @@ class DetailActivity : AppCompatActivity() {
         setFollowersFollowing(user)
 
         setIsFavorite()
-//        setIsFavorite2()
-
         fab_favorite.setOnClickListener {
             val username = user?.username
             val userUrl = user?.userUrl
-            val idNumber = user?.idNumber
+            val name = tv_name.text.toString()
             val avatar = user?.avatarUrl
 
             val intent = Intent()
@@ -71,7 +69,7 @@ class DetailActivity : AppCompatActivity() {
             val values = ContentValues().apply {
                 put(USERNAME, username)
                 put(URL, userUrl)
-                put(ID_NUMBER, idNumber)
+                put(NAME, name)
                 put(AVATAR, avatar)
             }
 
@@ -143,18 +141,6 @@ class DetailActivity : AppCompatActivity() {
         }
         setIconFavorite()
     }
-
-    //set is favorite kalau data favUserActivity
-//    private fun setIsFavorite2() {
-//        user = intent.getParcelableExtra(EXTRA_FAVORITE)
-//        if (user != null) {
-//            position = intent.getIntExtra(EXTRA_POSITION, 0)
-//            isFavorite = true
-//        } else {
-//            user = UserModel()
-//        }
-//        setIconFavorite()
-//    }
 
     private fun setIconFavorite() {
         if (isFavorite) {

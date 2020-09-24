@@ -17,10 +17,10 @@ class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener 
         super.onAttach(context)
 
         val fragment = parentFragment
+        //calling DialogFragment from fragment
         if(fragment is SettingsFragment){
             this.dialogTimeListener = fragment.dialogTimeListener
         }
-//        mListener = context as DialogTimeListener?
     }
 
     override fun onDetach() {

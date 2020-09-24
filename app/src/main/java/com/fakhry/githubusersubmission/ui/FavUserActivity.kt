@@ -29,6 +29,7 @@ class FavUserActivity : AppCompatActivity() {
         setContentView(R.layout.activity_fav_user)
 
         supportActionBar?.title = getString(R.string.title_fav_user)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         rv_fav_user.layoutManager = LinearLayoutManager(this)
         rv_fav_user.setHasFixedSize(true)
@@ -38,15 +39,32 @@ class FavUserActivity : AppCompatActivity() {
         favUserHelper.open()
 
         if (savedInstanceState == null) {
-            // proses ambil data
             loadNotesAsync()
         } else {
             val list = savedInstanceState.getParcelableArrayList<UserModel>(EXTRA_STATE)
             if (list != null) {
                 adapter.listFavUser = list
+                tv_opening.visibility = View.GONE
             }
         }
         rv_fav_user.adapter = adapter
+
+        adapter.setOnItemClickCallback(object : FavUserAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: UserModel) {
+                showSelectedUser(data)
+            }
+        })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    private fun showSelectedUser(userModel: UserModel) {
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(DetailActivity.EXTRA_STATE, userModel)
+        startActivity(intent)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -73,10 +91,15 @@ class FavUserActivity : AppCompatActivity() {
         }
     }
 
-
     override fun onDestroy() {
         super.onDestroy()
         favUserHelper.close()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadNotesAsync()
+        rv_fav_user.adapter = adapter
     }
 
     private fun loadNotesAsync() {

@@ -80,8 +80,6 @@ class AlarmReceiver : BroadcastReceiver() {
     }
 
     fun setRepeatingAlarm(context: Context, time: String) {
-
-        // Validasi inputan waktu terlebih dahulu
         if (isDateInvalid(time)) return
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -120,7 +118,6 @@ class AlarmReceiver : BroadcastReceiver() {
         Toast.makeText(context, context.getString(R.string.reminder_turned_off), Toast.LENGTH_SHORT).show()
     }
 
-    // Metode ini digunakan untuk validasi date dan time
     private fun isDateInvalid(date: String): Boolean {
         return try {
             val df = SimpleDateFormat(TIME_FORMAT, Locale.getDefault())
