@@ -7,4 +7,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextContext" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="TextContext.Large">
+        <item name = "android:textStyle">bold</item>
+        <item name = "android:textSize">14sp</item>
+    </style>
+
+    <style name="TextContext.Regular">
+        <item name = "android:textSize">12sp</item>
+    </style>
 </resources>

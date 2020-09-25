@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Github Consumer App</string>
+
+    <!--User Details-->
+    <string name="id">id :</string>
+    <string name="url">url :</string>
+
+    <!--Content Description-->
+    <string name="profile_avatar">Profile Avatar</string>
+
+    <!--Favorite-->
+    <string name="nothing_favorite_user_to_show">Nothing Favorite User to Show</string>
+    <string name="title_fav_user">Favorite List</string>
+
+    <!--Consumer App-->
+    <string name="choose">You choose</string>
+
 </resources>
