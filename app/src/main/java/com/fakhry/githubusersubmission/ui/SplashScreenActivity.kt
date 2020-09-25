@@ -1,9 +1,9 @@
 package com.fakhry.githubusersubmission.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.fakhry.githubusersubmission.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -25,7 +25,7 @@ class SplashScreenActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } catch (e: Exception) {
-                Log.d("onBoarding", e.message.toString())
+                Log.e("onBoarding", e.message.toString())
             }
         }
     }

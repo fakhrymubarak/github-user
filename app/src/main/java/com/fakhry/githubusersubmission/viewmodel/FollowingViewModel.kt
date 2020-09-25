@@ -10,7 +10,6 @@ import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
 import org.json.JSONArray
-import java.lang.Exception
 
 class FollowingViewModel : ViewModel() {
     private val listFollowing = MutableLiveData<ArrayList<UserModel>>()
@@ -42,7 +41,7 @@ class FollowingViewModel : ViewModel() {
                     }
                     listFollowing.postValue(listData)
                 } catch (e: Exception) {
-                    Log.d("onSuccess", e.message.toString())
+                    Log.e("onSuccess", e.message.toString())
                 }
             }
 
@@ -52,7 +51,7 @@ class FollowingViewModel : ViewModel() {
                 responseBody: ByteArray?,
                 error: Throwable
             ) {
-                Log.d("onFailure", error.message.toString())
+                Log.e("onFailure", error.message.toString())
             }
         })
 

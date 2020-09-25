@@ -19,18 +19,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        style="@style/TextContext.Large"
-        android:id="@+id/tv_opening"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/sentences"
+    <ImageView
+        android:id="@+id/iv_search_user"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_undraw_people_search_wctu"
+        android:contentDescription="@string/search_user_illustration" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_user"
@@ -41,6 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_row_user" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

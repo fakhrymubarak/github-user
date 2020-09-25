@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
@@ -67,7 +66,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
                         requireContext(),
                         AlarmReceiver.TYPE_REPEATING
                     )
-                    Log.d("micin", "alarm off")
                 }
                 setSummaries()
             }
@@ -81,7 +79,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
             mFragmentManager,
             TimePickerFragment::class.java.simpleName
         )
-        Log.d("micin", "setAlarmTime() success")
 
     }
 
@@ -90,18 +87,10 @@ class SettingsFragment : PreferenceFragmentCompat(),
             requireContext(),
             repeatTime
         )
-        Log.d("micin", "setRepeatAlarm() success")
 
     }
 
     private fun setSummaries() {
-        /**
-         * need to know how to get time from active alarm :)
-         */
-//        val sh = preferenceManager.sharedPreferences
-//        if (sh.getBoolean(ALARM, false)) {
-//            alarmPreference.summaryOn =
-//        }
         alarmPreference.summaryOn = getString(R.string.reminder_set_up)
 
         val currentLanguage = Locale.getDefault().displayLanguage
@@ -120,12 +109,10 @@ class SettingsFragment : PreferenceFragmentCompat(),
                 val timeTaken = dateFormat.format(calendar.time)
                 alarmPreference.summaryOn = getString(R.string.reminder_set_up) + " " + timeTaken
                 setRepeatAlarm(timeTaken)
-                Log.d("micin", "TimePicker.onDilaogTiuneSet() success")
             }
 
             override fun onCancel() {
                 alarmPreference.isChecked = false
-                Log.d("micin", "TimePicker.onCance() success")
 
             }
         }

@@ -9,6 +9,7 @@
     <!--Content Description-->
     <string name="profile_avatar">Profile Avatar</string>
     <string name="logo_dicoding_x_idcamp">Logo Dicoding x IdCamp</string>
+    <string name="search_user_illustration">Search User Illustration</string>
 
     <!--Action Bar-->
     <string name="search">Search</string>
@@ -19,11 +20,6 @@
     <string name="tab_text_1">Followers</string>
     <string name="tab_text_2">Following</string>
 
-    <string name="sentences">
-        Hi, there!
-        \nYou can use this application for searching a github user by fill the search field in the top of your screen!
-        \n\nnb. Tekan tombol pojok kanan atas untuk mengubah ke Bahasa Indonesia!
-    </string>
     <string name="you_offline">You are offline. Please, connect to the internet.</string>
 
     <!--Favorite-->

@@ -32,6 +32,7 @@ class DetailActivity : AppCompatActivity() {
 
 
     companion object {
+        internal val TAG = DetailActivity::class.java.simpleName
         const val EXTRA_STATE = "EXTRA_STATE"
         const val EXTRA_FAVORITE = "extra_favorite"
         const val EXTRA_POSITION = "extra_position"
@@ -79,7 +80,7 @@ class DetailActivity : AppCompatActivity() {
                     setResult(RESULT_DELETE, intent)
                     showToast(user?.username + " " + getString(R.string.removed_from_favorite))
                 } else {
-                    Log.e("DetailActivity", "Failed to delete user")
+                    Log.e(TAG, "Failed to delete user")
                 }
             } else {
                 val result = favUserHelper.insert(values)
@@ -88,7 +89,7 @@ class DetailActivity : AppCompatActivity() {
                     setResult(RESULT_ADD, intent)
                     showToast(user?.username + " " + getString(R.string.added_to_favorite))
                 } else {
-                    Log.e("DetailActivity", "Failed to add new user")
+                    Log.e(TAG, "Failed to add new user")
                 }
             }
             setIsFavorite()
@@ -128,7 +129,6 @@ class DetailActivity : AppCompatActivity() {
     private fun setIsFavorite() {
         val cursor = favUserHelper.queryAll()
         val listData = MappingHelper.mapCursorToArrayList(cursor)
-        Log.d("DetailActivity", "PELAKU UTAMA: ${user?.username}")
         if (listData.size > 0) {
             for (data in listData) {
                 if (user?.username == data.username) {
@@ -137,7 +137,6 @@ class DetailActivity : AppCompatActivity() {
                 } else {
                     isFavorite = false
                 }
-                Log.d("DetailActivity", "Tersangka : $data")
             }
         } else {
             isFavorite = false

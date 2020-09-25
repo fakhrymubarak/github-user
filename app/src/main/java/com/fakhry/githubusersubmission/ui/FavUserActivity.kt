@@ -44,7 +44,6 @@ class FavUserActivity : AppCompatActivity() {
             val list = savedInstanceState.getParcelableArrayList<UserModel>(EXTRA_STATE)
             if (list != null) {
                 adapter.listFavUser = list
-                tv_opening.visibility = View.GONE
             }
         }
         rv_fav_user.adapter = adapter
@@ -113,6 +112,8 @@ class FavUserActivity : AppCompatActivity() {
             val notes = deferredFavUser.await()
             if (notes.size > 0) {
                 adapter.listFavUser = notes
+                tv_opening.visibility = View.GONE
+                iv_search_user.visibility = View.GONE
             } else {
                 adapter.listFavUser = ArrayList()
             }

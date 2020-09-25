@@ -5,13 +5,13 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,9 +54,9 @@ class MainActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(query: String): Boolean {
                 if (isOnline(this@MainActivity)) {
                     if (query.isNotEmpty()) {
-                        tv_opening.visibility = View.GONE
                         showLoading(true)
                         mainViewModel.setListUser(query)
+                        iv_search_user.visibility = View.GONE
                     }
                 } else {
                     Toast.makeText(this@MainActivity, R.string.you_offline, Toast.LENGTH_LONG).show()
