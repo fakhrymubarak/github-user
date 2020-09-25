@@ -125,19 +125,22 @@ class DetailActivity : AppCompatActivity() {
         return true
     }
 
-    //set is favorite kalau data dari detailActivity
     private fun setIsFavorite() {
         val cursor = favUserHelper.queryAll()
         val listData = MappingHelper.mapCursorToArrayList(cursor)
         Log.d("DetailActivity", "PELAKU UTAMA: ${user?.username}")
-        for (data in listData) {
-            Log.d("DetailActivity", "Tersangka : $data")
-            if (user?.username == data.username) {
-                isFavorite = true
-                break
-            } else {
-                isFavorite = false
+        if (listData.size > 0) {
+            for (data in listData) {
+                if (user?.username == data.username) {
+                    isFavorite = true
+                    break
+                } else {
+                    isFavorite = false
+                }
+                Log.d("DetailActivity", "Tersangka : $data")
             }
+        } else {
+            isFavorite = false
         }
         setIconFavorite()
     }
