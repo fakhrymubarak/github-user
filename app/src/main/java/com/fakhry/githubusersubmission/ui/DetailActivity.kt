@@ -1,9 +1,8 @@
 package com.fakhry.githubusersubmission.ui
 
 import android.content.ContentValues
-import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +12,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.fakhry.githubusersubmission.R
 import com.fakhry.githubusersubmission.adapter.SectionsPagerAdapter
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.AVATAR
+import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.CONTENT_URI
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.NAME
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.URL
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.USERNAME
@@ -27,11 +27,12 @@ class DetailActivity : AppCompatActivity() {
 
     private var isFavorite = false
     private var user: UserModel? = null
-    private var position: Int = 0
     private lateinit var favUserHelper: FavUserHelper
+    private lateinit var uriWithUsername: Uri
 
 
     companion object {
+        internal val TAG = DetailActivity::class.java.simpleName
         const val EXTRA_STATE = "EXTRA_STATE"
         const val EXTRA_FAVORITE = "extra_favorite"
         const val EXTRA_POSITION = "extra_position"
@@ -50,6 +51,8 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         favUserHelper = FavUserHelper.getInstance(applicationContext)
+        uriWithUsername = Uri.parse(CONTENT_URI.toString() + "/" + user?.username)
+
         favUserHelper.open()
 
         setDataDetail(user)
@@ -62,10 +65,6 @@ class DetailActivity : AppCompatActivity() {
             val name = tv_name.text.toString()
             val avatar = user?.avatarUrl
 
-            val intent = Intent()
-            intent.putExtra(EXTRA_FAVORITE, user)
-            intent.putExtra(EXTRA_POSITION, position)
-
             val values = ContentValues().apply {
                 put(USERNAME, username)
                 put(URL, userUrl)
@@ -74,27 +73,15 @@ class DetailActivity : AppCompatActivity() {
             }
 
             if (isFavorite) {
-                val result = favUserHelper.deleteByUsername(user?.username.toString())
-                if (result > 0) {
-                    setResult(RESULT_DELETE, intent)
-                    showToast(user?.username + " " + getString(R.string.removed_from_favorite))
-                } else {
-                    Log.e("DetailActivity", "Failed to delete user")
-                }
+                contentResolver.delete(uriWithUsername, null, null)
+                showToast(user?.username + " " + getString(R.string.removed_from_favorite))
             } else {
-                val result = favUserHelper.insert(values)
-                if (result > 0) {
-                    user?.id = result.toInt()
-                    setResult(RESULT_ADD, intent)
-                    showToast(user?.username + " " + getString(R.string.added_to_favorite))
-                } else {
-                    Log.e("DetailActivity", "Failed to add new user")
-                }
+                contentResolver.insert(CONTENT_URI, values)
+                showToast(user?.username + " " + getString(R.string.added_to_favorite))
             }
             setIsFavorite()
         }
     }
-
 
     private fun setDataDetail(userModel: UserModel?) {
         detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
@@ -126,9 +113,8 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setIsFavorite() {
-        val cursor = favUserHelper.queryAll()
+        val cursor = contentResolver?.query(CONTENT_URI, null, null, null, null)
         val listData = MappingHelper.mapCursorToArrayList(cursor)
-        Log.d("DetailActivity", "PELAKU UTAMA: ${user?.username}")
         if (listData.size > 0) {
             for (data in listData) {
                 if (user?.username == data.username) {
@@ -137,7 +123,6 @@ class DetailActivity : AppCompatActivity() {
                 } else {
                     isFavorite = false
                 }
-                Log.d("DetailActivity", "Tersangka : $data")
             }
         } else {
             isFavorite = false

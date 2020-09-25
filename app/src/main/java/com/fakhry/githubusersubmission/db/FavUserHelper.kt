@@ -5,15 +5,18 @@ import android.content.Context
 import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
+import android.util.Log
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.ID
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.TABLE_NAME
 import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.USERNAME
+import com.fakhry.githubusersubmission.provider.FavoriteProvider
 
 class FavUserHelper(context: Context) {
     private var dataBaseHelper: DatabaseHelper = DatabaseHelper(context)
     private lateinit var database: SQLiteDatabase
 
     companion object {
+        internal val TAG = this::class.java.simpleName
         private const val DATABASE_TABLE = TABLE_NAME
         private var INSTANCE: FavUserHelper? = null
 
@@ -50,28 +53,45 @@ class FavUserHelper(context: Context) {
             "$ID ASC")
     }
 
-//    fun queryById(id: String): Cursor {
-//        return database.query(
-//            DATABASE_TABLE,
-//            null,
-//            "$ID = ?",
-//            arrayOf(id),
-//            null,
-//            null,
-//            null,
-//            null)
-//    }
+    fun queryById(id: String): Cursor {
+        return database.query(
+            DATABASE_TABLE,
+            null,
+            "$ID = ?",
+            arrayOf(id),
+            null,
+            null,
+            null,
+            null)
+    }
+
+    fun queryByUsername(username: String): Cursor {
+        return database.query(
+            DATABASE_TABLE,
+            null,
+            "$USERNAME = ?",
+            arrayOf(username),
+            null,
+            null,
+            null,
+            null)
+    }
 
     fun insert(values: ContentValues?): Long {
         return database.insert(DATABASE_TABLE, null, values)
     }
 
-//    fun update(id: String, values: ContentValues?): Int {
-//        return database.update(DATABASE_TABLE, values, "$ID = ?", arrayOf(id))
-//    }
+    fun update(id: String, values: ContentValues?): Int {
+        return database.update(DATABASE_TABLE, values, "$ID = ?", arrayOf(id))
+    }
 
     fun deleteByUsername(username: String): Int {
+        Log.d(TAG, "Trying to delete user 3 : $username")
         return database.delete(DATABASE_TABLE, "$USERNAME = '$username'", null)
+    }
+
+    fun deleteById(id: String): Int {
+        return database.delete(DATABASE_TABLE, "$ID = '$id'", null)
     }
 
 }

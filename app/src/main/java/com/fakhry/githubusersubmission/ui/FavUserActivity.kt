@@ -1,12 +1,17 @@
 package com.fakhry.githubusersubmission.ui
 
 import android.content.Intent
+import android.database.ContentObserver
 import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fakhry.githubusersubmission.R
 import com.fakhry.githubusersubmission.adapter.FavUserAdapter
+import com.fakhry.githubusersubmission.db.DatabaseContract.FavUserColumns.Companion.CONTENT_URI
 import com.fakhry.githubusersubmission.db.FavUserHelper
 import com.fakhry.githubusersubmission.helper.MappingHelper
 import com.fakhry.githubusersubmission.model.UserModel
@@ -37,6 +42,17 @@ class FavUserActivity : AppCompatActivity() {
 
         favUserHelper = FavUserHelper.getInstance(applicationContext)
         favUserHelper.open()
+
+        val handlerThread = HandlerThread("DataObserver")
+        handlerThread.start()
+        val handler = Handler(handlerThread.looper)
+        val myObserver = object : ContentObserver(handler) {
+            override fun onChange(self: Boolean) {
+                loadNotesAsync()
+            }
+        }
+
+        contentResolver.registerContentObserver(CONTENT_URI, true, myObserver)
 
         if (savedInstanceState == null) {
             loadNotesAsync()
@@ -76,12 +92,13 @@ class FavUserActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (data != null) {
             when (requestCode) {
-                DetailActivity.REQUEST_ADD -> if (resultCode == DetailActivity.RESULT_ADD) {
-                    val favUser =
-                        data.getParcelableExtra<UserModel>(DetailActivity.EXTRA_FAVORITE)
-                    adapter.addItem(favUser!!)
-                    rv_fav_user.smoothScrollToPosition(adapter.itemCount - 1)
-                }
+                DetailActivity.REQUEST_ADD ->
+                    if (resultCode == DetailActivity.RESULT_ADD) {
+                        val favUser =
+                            data.getParcelableExtra<UserModel>(DetailActivity.EXTRA_FAVORITE)
+                        adapter.addItem(favUser!!)
+                        rv_fav_user.smoothScrollToPosition(adapter.itemCount - 1)
+                    }
                 DetailActivity.REQUEST_DELETE ->
                     if (resultCode == DetailActivity.RESULT_DELETE) {
                         val position = data.getIntExtra(DetailActivity.EXTRA_POSITION, 0)
@@ -106,11 +123,13 @@ class FavUserActivity : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.Main) {
             progressBar.visibility = View.VISIBLE
             val deferredFavUser = async(Dispatchers.IO) {
-                val cursor = favUserHelper.queryAll()
+                val cursor = contentResolver?.query(CONTENT_URI, null, null, null, null)
+//                val cursor = favUserHelper.queryAll()
                 MappingHelper.mapCursorToArrayList(cursor)
             }
             progressBar.visibility = View.INVISIBLE
             val notes = deferredFavUser.await()
+            Log.d("DetailActivity", "suspect : List Database = ${notes.size}")
             if (notes.size > 0) {
                 adapter.listFavUser = notes
             } else {

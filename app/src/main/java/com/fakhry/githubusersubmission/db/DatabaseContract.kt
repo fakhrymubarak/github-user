@@ -1,8 +1,13 @@
 package com.fakhry.githubusersubmission.db
 
+import android.net.Uri
 import android.provider.BaseColumns
 
-internal class DatabaseContract {
+object DatabaseContract {
+
+    const val AUTHORITY = "com.fakhry.githubusersubmission"
+    const val SCHEME = "content"
+
     internal class FavUserColumns : BaseColumns {
         companion object{
             const val TABLE_NAME = "fav_user"
@@ -11,6 +16,11 @@ internal class DatabaseContract {
             const val USERNAME = "username"
             const val URL = "url"
             const val AVATAR ="avatar"
+
+            val CONTENT_URI: Uri = Uri.Builder().scheme(SCHEME)
+                .authority(AUTHORITY)
+                .appendPath(TABLE_NAME)
+                .build()
         }
     }
 }

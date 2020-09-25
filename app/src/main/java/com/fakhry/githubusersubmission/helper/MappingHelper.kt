@@ -20,4 +20,20 @@ object MappingHelper {
         }
         return favUserList
     }
+
+//    fun mapCursorToObject(favUserCursor: Cursor?): UserModel {
+//        val favUserList = UserModel()
+//
+//        favUserCursor?.apply {
+//            while (moveToNext()) {
+//                val id = getInt(getColumnIndex(DatabaseContract.FavUserColumns.ID))
+//                val name = getString(getColumnIndex(DatabaseContract.FavUserColumns.NAME))
+//                val username = getString(getColumnIndex(DatabaseContract.FavUserColumns.USERNAME))
+//                val userUrl = getString(getColumnIndex(DatabaseContract.FavUserColumns.URL))
+//                val avatar = getString(getColumnIndex(DatabaseContract.FavUserColumns.AVATAR))
+//                UserModel(id, name, username, userUrl, avatar)
+//            }
+//        }
+//        return favUserList
+//    }
 }

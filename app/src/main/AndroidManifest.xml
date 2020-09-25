@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.fakhry.githubusersubmission">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
+
+    <permission
+        android:name="com.fakhry.githubusersubmission.READ_DATABASE"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="com.fakhry.githubusersubmission.WRITE_DATABASE"
+        android:protectionLevel="normal" />
 
     <application
         android:name=".MyApplication"
@@ -17,6 +24,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <provider
+            android:name=".provider.FavoriteProvider"
+            android:authorities="com.fakhry.githubusersubmission"
+            android:enabled="true"
+            android:exported="true"
+            android:readPermission="com.fakhry.githubusersubmission.READ_DATABASE"
+            android:writePermission="com.fakhry.githubusersubmission.WRITE_DATABASE"
+            tools:ignore="ExportedContentProvider" />
+
         <activity android:name=".ui.SettingsActivity" />
         <activity android:name=".ui.FavUserActivity" />
         <activity android:name=".ui.DetailActivity" />
@@ -41,4 +57,5 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
 </manifest>
