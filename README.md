@@ -37,3 +37,4 @@ API_KEY = "token YOUR_PERSONAL_ACCESS_TOKEN"
 * [Instagram : Developer Gabut](https://www.instagram.com/developer.gabut/)
 
 # License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
